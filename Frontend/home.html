@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="home.js"></script>
+    <script src="./script/customer.js"></script>
+    <script src="./script/material.js"></script>
+    <script src="./script/invoice.js"></script>
+    <link rel="stylesheet" href="home.css">
+
+    <title>Angular Routing Example</title>
+</head>
+
+<body ng-app="myApp">
+    <div class="main">
+        <div class="link">
+            <ul>
+                <li><a href="#!customer">Customer</a></li>
+                <li><a href="#!material">Material</a></li>
+                <li><a href="#!invoice">Invoice Details</a></li>
+            </ul>
+        </div>  
+        <div class="right">
+            <div ng-view>  
+            </div>
+                
+        </div>
+    </div>
+</body>
+
+</html>

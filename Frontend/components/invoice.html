@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="./styles/invoice.css">
+<div ng-controller="invoiceController">
+  <fieldset>
+    <h3>Invoice Details</h3>
+    <label > Bill.NO: </label>
+    <input type="text" ng-model="billNo"> <br> <br>
+    <label for="text"> DATE</label>
+    <input type="date" ng-model="date"> <br> <br>
+
+    <label>Customer Name:</label>
+    <select ng-model="selectedCustomer" ng-options="customer.customerName for customer in customers">
+      <option value="">-- Select Customer --</option>
+    </select>
+    <br><br>
+
+    <label>Material Name:</label>
+    <select ng-model="selectedMaterial" ng-options="material.name for material in materials">
+      <option value="">-- Select Material --</option>
+    </select>
+    <br><br>
+
+    <label>Quantity:</label>
+    <input type="number" ng-model="quantity">
+    <label>Price:</label>
+    <input type="number" ng-disabled="true" ng-model="selectedMaterial.price">
+    <button ng-click="addInvoiceItem()">{{buttonLabel}}</button>
+    <!-- <input type="button" value="Add to Invoice" ng-click="addInvoiceItem()"> -->
+
+    <br><br>
+
+      <table border="1">
+          <thead>
+              <tr>
+                  <th>S.No</th>
+                  <th>Customer</th>
+                  <th>Material</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Gross Amount</th>
+                  <th>Tax (%)</th>
+                  <th>Net Amount</th>
+                  <th> Edit</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="item in invoiceItems">
+                  <td>{{$index + 1}}</td>
+                  <td>{{item.customerName}}</td>
+                  <td>{{item.materialName}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.price}}</td>
+                  <td>{{item.grossAmount}}</td>
+                  <td>{{item.tax}}</td>
+                  <td>{{item.netAmount}}</td>
+                  <td><button ng-click="editInvoice($index)">EDIT</button></td>
+              </tr>
+          </tbody>
+      </table>
+      <button ng-click="saveInvoices()"> SAVE</button>
+
+
+  </fieldset>
+      
+  
+  <div class="saved-invoices" >
+    <h3>Saved Invoices</h3>
+    <div class="saveinvoice" ng-repeat="item in savedInvoices">
+      <p>Bill No: {{item.billnumber}}</p>
+  <p>DATE: {{item.date}}</p>
+  <p>Customer: {{item.invoiceItems[0].customerName}}</p>
+      <!-- <button ng-click="editsave()">EDIT</button>   -->
+    </div>
+  </div>
+</div>
+
+    

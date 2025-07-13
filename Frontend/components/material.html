@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="./styles/material.css">
+<div class="second-container" ng-controller="myMaterialCtrl">
+
+    <fieldset>
+        <legend>Material Details</legend>
+        <div class="search">
+            <label for="text">Search Here:</label>
+            <input type="text" ng-model="searchText" placeholder="Type to search">
+        </div>
+        <h2>Material Details</h2>
+        <label for="materialCode">Material Code:</label>
+        <input type="text" ng-model="materialCode" placeholder="Material Code">
+        <br><br>
+        <label for="materialName">Material Name:</label>
+        <input type="text" ng-model="materialName" placeholder="Material Name">
+        <br><br>
+        <label for="materialPrice">Price:</label>
+        <input type="number" ng-model="materialPrice" placeholder="Material Price">
+        <br><br>
+        <label for="materialTax">TAX%:</label>
+        <input type="number" ng-model="materialTax" placeholder="Material Tax">
+        <br><br>
+        <button ng-click="saveMaterial()">{{buttonLabel}}</button>
+        <br><br>
+
+        <p>Material Table</p>
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Material Code</th>
+                    <th>Material Name</th>
+                    <th>Price</th>
+                    <th>TAX%</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="material in materials | orderBy:'name'">
+                    <td>{{$index + 1}}</td>
+                    <td>{{material.code}}</td>
+                    <td>{{material.name}}</td>
+                    <td>{{material.price}}</td>
+                    <td>{{material.tax}}</td>
+                    <td><button ng-click="editMaterial(material.code)">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</div>
